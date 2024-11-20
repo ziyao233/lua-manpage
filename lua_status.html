@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_status(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_status(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_status(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_status</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>int lua_status (lua_State *L);</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Returns the status of the thread <b>L</b></p>
+<p class="Pp">The status can be <b>LUA_OK</b> for a normal thread, an error code
+    if the thread finished the execution of a <b>lua_resume</b> with an error,
+    or <b>LUA_YIELD</b> if the thread is suspended.</p>
+<p class="Pp">You can call functions only in threads with status <b>LUA_OK</b>
+    <b>LUA_OK</b> (to start a new coroutine) or <b>LUA_YIELD</b> (to resume a
+    coroutine).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function never raises any error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>0</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>0</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

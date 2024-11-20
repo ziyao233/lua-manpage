@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_gc(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_gc(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_gc(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_gc</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>int lua_gc (lua_State *L, int what, ...);</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Controls the garbage collector.</p>
+<p class="Pp">This function performs several tasks, according to the value of
+    the parameter <b>what</b></p>
+<dl class="Bl-tag">
+  <dt id="LUA_GCCOLLECT"><a class="permalink" href="#LUA_GCCOLLECT"><b>LUA_GCCOLLECT</b></a></dt>
+  <dd>Performs a full garbage-collection cycle.</dd>
+  <dt id="LUA_GCSTOP"><a class="permalink" href="#LUA_GCSTOP"><b>LUA_GCSTOP</b></a></dt>
+  <dd>Stops the garbage collector.</dd>
+  <dt id="LUA_GCRESTART"><a class="permalink" href="#LUA_GCRESTART"><b>LUA_GCRESTART</b></a></dt>
+  <dd>Restarts the garbage collector.</dd>
+  <dt id="LUA_GCCOUNT"><a class="permalink" href="#LUA_GCCOUNT"><b>LUA_GCCOUNT</b></a></dt>
+  <dd>Returns the current amount of memory (in Kbytes) in use by Lua.</dd>
+  <dt id="LUA_GCCOUNTB"><a class="permalink" href="#LUA_GCCOUNTB"><b>LUA_GCCOUNTB</b></a></dt>
+  <dd>Returns the remainder of dividing the current amount of bytes of memory in
+      use by Lua by 1024.</dd>
+  <dt id="LUA_GCSTEP"><a class="permalink" href="#LUA_GCSTEP"><b>LUA_GCSTEP</b></a></dt>
+  <dd>(int n) Performs a step of garbage collection.</dd>
+  <dt id="LUA_GCISRUNNING"><a class="permalink" href="#LUA_GCISRUNNING"><b>LUA_GCISRUNNING</b></a></dt>
+  <dd>Returns a boolean that tells whether the collector is running (i.e., not
+      stopped).</dd>
+  <dt id="LUA_GCINC"><a class="permalink" href="#LUA_GCINC"><b>LUA_GCINC</b></a></dt>
+  <dd>Changes the collector to incremental mode. Returns the previous mode (
+      <b>LUA_GCGEN</b> or <b>LUA_GCINC</b> ).</dd>
+  <dt id="LUA_GCGEN"><a class="permalink" href="#LUA_GCGEN"><b>LUA_GCGEN</b></a></dt>
+  <dd>Changes the collector to generational mode. Returns the previous mode (
+      <b>LUA_GCGEN</b> or <b>LUA_GCINC</b> ).</dd>
+  <dt id="LUA_GCPARAM"><a class="permalink" href="#LUA_GCPARAM"><b>LUA_GCPARAM</b></a></dt>
+  <dd>(int param, int val) Changes and/or returns the value of a parameter of
+      the collector. If <b>val</b> is negative, the call only returns the
+      current value. The argument <b>param</b> must have one of the following
+      values:</dd>
+  <dt id="LUA_GCPMINORMUL"><a class="permalink" href="#LUA_GCPMINORMUL"><b>LUA_GCPMINORMUL</b></a></dt>
+  <dd>The minor multiplier.</dd>
+  <dt id="LUA_GCPMAJORMINOR"><a class="permalink" href="#LUA_GCPMAJORMINOR"><b>LUA_GCPMAJORMINOR</b></a></dt>
+  <dd>The major-minor multiplier.</dd>
+  <dt id="LUA_GCPMINORMAJOR"><a class="permalink" href="#LUA_GCPMINORMAJOR"><b>LUA_GCPMINORMAJOR</b></a></dt>
+  <dd>The minor-major multiplier.</dd>
+  <dt id="LUA_GCPPAUSE"><a class="permalink" href="#LUA_GCPPAUSE"><b>LUA_GCPPAUSE</b></a></dt>
+  <dd>The garbage-collector pause.</dd>
+  <dt id="LUA_GCPSTEPMUL"><a class="permalink" href="#LUA_GCPSTEPMUL"><b>LUA_GCPSTEPMUL</b></a></dt>
+  <dd>The step multiplier.</dd>
+  <dt id="LUA_GCPSTEPSIZE"><a class="permalink" href="#LUA_GCPSTEPSIZE"><b>LUA_GCPSTEPSIZE</b></a></dt>
+  <dd>The step size.</dd>
+</dl>
+<p class="Pp">For more details about these options, see
+  <b>collectgarbage</b></p>
+<p class="Pp">This function should not be called by a finalizer.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function never raises any error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>0</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>0</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

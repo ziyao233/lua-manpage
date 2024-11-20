@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_Writer(3type)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_Writer(3type)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_Writer(3type)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_Writer</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>typedef int (*lua_Writer) (lua_State *L,</b>
+  <br/>
+   const void* p,
+  <br/>
+   size_t sz,
+  <br/>
+   void* ud);</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The type of the writer function used by <b>lua_dump</b>
+    <b>lua_dump</b> produces another piece of chunk, it calls the writer,
+    passing along the buffer to be written ( <b>p</b> ), its size ( <b>sz</b> ),
+    and the <b>ud</b> parameter supplied to <b>lua_dump</b></p>
+<p class="Pp">After <b>lua_dump</b> writes its last piece, it will signal that
+    by calling the writer function one more time, with a <b>NULL</b> buffer (and
+    size 0).</p>
+<p class="Pp">The writer returns an error code: false 0 means no errors; any
+    other value means an error and stops <b>lua_dump</b> from calling the writer
+    again.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

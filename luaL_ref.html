@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>luaL_ref(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">luaL_ref(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">luaL_ref(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">luaL_ref</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lauxlib.h&gt;</b></p>
+<p class="Pp"><b>int luaL_ref (lua_State *L, int t);</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Creates and returns a <i>reference</i> , in the table at index
+    <b>t</b> , for the object on the top of the stack (and pops the object).</p>
+<p class="Pp">The reference system uses the integer keys of the table. A
+    reference is a unique integer key; <b>luaL_ref</b> ensures the uniqueness of
+    the keys it returns. The entry 1 is reserved for internal use. Before the
+    first use of <b>luaL_ref</b> , the integer keys of the table should form a
+    proper sequence (no holes), and the value at entry 1 should be false: @nil
+    if the sequence is empty, @false otherwise. You should not manually set
+    integer keys in the table after the first use of <b>luaL_ref</b></p>
+<p class="Pp">You can retrieve an object referred by the reference <b>r</b> by
+    calling <b>lua_rawgeti(L, t, r)</b> or <b>lua_geti(L, t, r)</b>
+    <b>luaL_unref</b> frees a reference.</p>
+<p class="Pp">If the object on the top of the stack is @nil, <b>luaL_ref</b>
+    returns the constant <b>LUA_REFNIL</b> <b>LUA_NOREF</b> is guaranteed to be
+    different from any reference returned by <b>luaL_ref</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function only raises out-of-memory error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>0</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>1</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

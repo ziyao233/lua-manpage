@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_pushextlstring(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_pushextlstring(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_pushextlstring(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_pushextlstring</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>const char *(lua_pushextlstring) (lua_State *L,</b>
+  <br/>
+   const char *s, size_t len, lua_Alloc falloc, void *ud);</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Creates an external string, that is, a string that uses memory not
+    managed by Lua. The pointer <b>s</b> points to the external buffer holding
+    the string content, and <b>len</b> is the length of the string. The string
+    should have a zero at its end, that is, the condition <b>s[len] ==
+    '&#x00A0;'</b> should hold. As with any string in Lua, the length must fit
+    in a Lua integer.</p>
+<p class="Pp">If <b>falloc</b> is different from <b>NULL</b> , that function
+    will be called by Lua when the external buffer is no longer needed. The
+    contents of the buffer should not change before this call. The function will
+    be called with the given <b>ud</b> , the string <b>s</b> as the block, the
+    length plus one (to account for the ending zero) as the old size, and 0 as
+    the new size.</p>
+<p class="Pp">Lua always false internalizes strings with lengths up to 40
+    characters. So, for strings in that range, this function will immediately
+    internalize the string and call <b>falloc</b> to free the buffer.</p>
+<p class="Pp">Even when using an external buffer, Lua still has to allocate a
+    header for the string. In case of a memory-allocation error, Lua will call
+    <b>falloc</b> before raising the error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function only raises out-of-memory error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>1</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>0</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

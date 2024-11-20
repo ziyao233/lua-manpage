@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_Debug(3type)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_Debug(3type)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_Debug(3type)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_Debug</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>typedef struct lua_Debug {</b>
+  <br/>
+   int event;
+  <br/>
+   const char *name; /* (n) */
+  <br/>
+   const char *namewhat; /* (n) */
+  <br/>
+   const char *what; /* (S) */
+  <br/>
+   const char *source; /* (S) */
+  <br/>
+   size_t srclen; /* (S) */
+  <br/>
+   int currentline; /* (l) */
+  <br/>
+   int linedefined; /* (S) */
+  <br/>
+   int lastlinedefined; /* (S) */
+  <br/>
+   unsigned char nups; /* (u) number of upvalues */
+  <br/>
+   unsigned char nparams; /* (u) number of parameters */
+  <br/>
+   char isvararg; /* (u) */
+  <br/>
+   char istailcall; /* (t) */
+  <br/>
+   int ftransfer; /* (r) index of first value transferred */
+  <br/>
+   int ntransfer; /* (r) number of transferred values */
+  <br/>
+   char short_src[LUA_IDSIZE]; /* (S) */
+  <br/>
+   /* private part */
+  <br/>
+   @rep{other fields} } lua_Debug;</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">A structure used to carry different pieces of information about a
+    function or an activation record. <b>lua_getstack</b> fills only the private
+    part of this structure, for later use. To fill the other fields of
+    <b>lua_Debug</b> with useful information, you must call <b>lua_getinfo</b>
+    with an appropriate parameter. (Specifically, to get a field, you must add
+    the letter between parentheses in the field's comment to the parameter
+    <b>what</b> of <b>lua_getinfo</b></p>
+<p class="Pp">The fields of <b>lua_Debug</b> have the following meaning:</p>
+<dl class="Bl-tag">
+  <dt id="source"><a class="permalink" href="#source"><b>source</b></a></dt>
+  <dd>the source of the chunk that created the function. If <b>source</b> starts
+      with a <b>'@At'</b> , it means that the function was defined in a file
+      where the file name follows the <b>'@At'</b> <b>source</b> starts with a
+      <b>'='</b> , the remainder of its contents describes the source in a
+      user-dependent manner. Otherwise, the function was defined in a string
+      where <b>source</b> is that string.</dd>
+  <dt id="srclen"><a class="permalink" href="#srclen"><b>srclen</b></a></dt>
+  <dd>The length of the string <b>source</b></dd>
+  <dt id="short_src"><a class="permalink" href="#short_src"><b>short_src</b></a></dt>
+  <dd>a <i>printable</i> version of <b>source</b> , to be used in error
+      messages.</dd>
+  <dt id="linedefined"><a class="permalink" href="#linedefined"><b>linedefined</b></a></dt>
+  <dd>the line number where the definition of the function starts.</dd>
+  <dt id="lastlinedefined"><a class="permalink" href="#lastlinedefined"><b>lastlinedefined</b></a></dt>
+  <dd>the line number where the definition of the function ends.</dd>
+  <dt id="what"><a class="permalink" href="#what"><b>what</b></a></dt>
+  <dd>the string <b>Lua</b> if the function is a Lua function, <b>C</b> if it is
+      a false C function , <b>main</b> if it is the main part of a chunk.</dd>
+  <dt id="currentline"><a class="permalink" href="#currentline"><b>currentline</b></a></dt>
+  <dd>the current line where the given function is executing. When no line
+      information is available, <b>currentline</b> is set to -1.</dd>
+  <dt id="name"><a class="permalink" href="#name"><b>name</b></a></dt>
+  <dd>a reasonable name for the given function. Because functions in Lua are
+      first-class values, they do not have a fixed name: some functions can be
+      the value of multiple global variables, while others can be stored only in
+      a table field. The <b>lua_getinfo</b> function checks how the function was
+      called to find a suitable name. If it cannot find a name, then <b>name</b>
+      is set to <b>NULL</b></dd>
+  <dt id="namewhat"><a class="permalink" href="#namewhat"><b>namewhat</b></a></dt>
+  <dd>explains the <b>name</b> field. The value of <b>namewhat</b> can be
+      <b>global</b> , <b>local</b> , <b>method</b> , <b>field</b> ,
+      <b>upvalue</b> , or <b>
+    </b>(the empty string), according to how the function was called. (Lua uses
+      the empty string when no other option seems to apply.)</dd>
+  <dt id="istailcall"><a class="permalink" href="#istailcall"><b>istailcall</b></a></dt>
+  <dd>true if this function invocation was called by a tail call. In this case,
+      the caller of this level is not in the stack.</dd>
+  <dt id="nups"><a class="permalink" href="#nups"><b>nups</b></a></dt>
+  <dd>the number of upvalues of the function.</dd>
+  <dt id="nparams"><a class="permalink" href="#nparams"><b>nparams</b></a></dt>
+  <dd>the number of parameters of the function (always false 0 for false C
+      functions ).</dd>
+  <dt id="isvararg"><a class="permalink" href="#isvararg"><b>isvararg</b></a></dt>
+  <dd>true if the function is a variadic function (always true for false C
+      functions ).</dd>
+  <dt id="ftransfer"><a class="permalink" href="#ftransfer"><b>ftransfer</b></a></dt>
+  <dd>the index in the stack of the first value being <i>transferred</i> , that
+      is, parameters in a call or return values in a return. (The other values
+      are in consecutive indices.) Using this index, you can access and modify
+      these values through <b>lua_getlocal</b> and <b>lua_setlocal</b></dd>
+  <dt id="ntransfer"><a class="permalink" href="#ntransfer"><b>ntransfer</b></a></dt>
+  <dd>The number of values being transferred (see previous item). (For calls of
+      Lua functions, this value is always equal to <b>nparams</b></dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

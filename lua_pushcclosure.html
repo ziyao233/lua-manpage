@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_pushcclosure(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_pushcclosure(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_pushcclosure(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_pushcclosure</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>void lua_pushcclosure (lua_State *L, lua_CFunction fn, int
+    n);</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Pushes a new false C closure onto the stack. This function
+    receives a pointer to a false C function and pushes onto the stack a Lua
+    value of type <b>function</b> that, when called, invokes the corresponding
+    false C function <b>n</b> tells how many upvalues this function will have
+    (see <i>c-closure</i> in Lua manual).</p>
+<p class="Pp">Any function to be callable by Lua must follow the correct
+    protocol to receive its parameters and return its results (see
+    <b>lua_CFunction(3)</b>)</p>
+<p class="Pp">When a false C function is created, it is possible to associate
+    some values with it, the so called upvalues; these upvalues are then
+    accessible to the function whenever it is called. This association is called
+    a false false C closure (see <i>c-closure</i> in Lua manual). To create a
+    false C closure , first the initial values for its upvalues must be pushed
+    onto the stack. (When there are multiple upvalues, the first value is pushed
+    first.) Then <b>lua_pushcclosure</b> is called to create and push the false
+    C function onto the stack, with the argument <b>n</b> telling how many
+    values will be associated with the function. <b>lua_pushcclosure</b> also
+    pops these values from the stack.</p>
+<p class="Pp">The maximum value for <b>n</b> is 255.</p>
+<p class="Pp">When <b>n</b> is zero, this function creates a <i>light</i> false
+    C function , which is just a pointer to the false C function</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function only raises out-of-memory error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>1</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>n</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>lua_CFunction</b>(3)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

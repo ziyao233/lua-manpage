@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_resume(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_resume(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_resume(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_resume</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>int lua_resume (lua_State *L, lua_State *from, int nargs,</b>
+  <br/>
+   int *nresults);</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Starts and resumes a coroutine in the given thread <b>L</b></p>
+<p class="Pp">To start a coroutine, you push the main function plus any
+    arguments onto the empty stack of the thread. then you call
+    <b>lua_resume</b> , with <b>nargs</b> being the number of arguments. The
+    function returns when the coroutine suspends, finishes its execution, or
+    raises an unprotected error. When it returns without errors,
+    <b>*nresults</b> is updated and the top of the stack contains the
+    <b>*nresults</b> values passed to <b>lua_yield</b> or returned by the body
+    function. <b>lua_resume</b> returns <b>LUA_YIELD</b> if the coroutine
+    yields, <b>LUA_OK</b> if the coroutine finishes its execution without
+    errors, or an error code in case of errors (see <i>statuscodes</i> in Lua
+    manual). In case of errors, the error object is pushed on the top of the
+    stack. (In that case, <b>nresults</b> is not updated, as its value would
+    have to be 1 for the sole error object.)</p>
+<p class="Pp">To resume a suspended coroutine, you remove the <b>*nresults</b>
+    yielded values from its stack, push the values to be passed as results from
+    <b>yield</b> , and then call <b>lua_resume</b></p>
+<p class="Pp">The parameter <b>from</b> represents the coroutine that is
+    resuming <b>L</b> <b>NULL</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function never raises any error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>unknown</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>unknown</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

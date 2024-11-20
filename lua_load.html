@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_load(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_load(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_load(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_load</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>int lua_load (lua_State *L,</b>
+  <br/>
+   lua_Reader reader,
+  <br/>
+   void *data,
+  <br/>
+   const char *chunkname,
+  <br/>
+   const char *mode);</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Loads a Lua chunk without running it. If there are no errors,
+    <b>lua_load</b> pushes the compiled chunk as a Lua function on top of the
+    stack. Otherwise, it pushes an error message.</p>
+<p class="Pp">The <b>lua_load</b> function uses a user-supplied <b>reader</b>
+    function to read the chunk (see <b>lua_Reader(3)</b>) <b>data</b> argument
+    is an opaque value passed to the reader function.</p>
+<p class="Pp">The <b>chunkname</b> argument gives a name to the chunk, which is
+    used for error messages and in debug information (see <i>debugI</i> in Lua
+    manual).</p>
+<p class="Pp"><b>lua_load</b> automatically detects whether the chunk is text or
+    binary and loads it accordingly (see program <b>luac</b> ). The string
+    <b>mode</b> works as in function <b>load</b> , with the addition that a
+    <b>NULL</b> value is equivalent to the string bt. Moreover, it may have a
+    <b>'B'</b> instead of a <b>'b'</b> , meaning a fixed buffer with the binary
+    dump.</p>
+<p class="Pp">A fixed buffer means that the address returned by the reader
+    function will contain the chunk until everything created by the chunk has
+    been collected; therefore, Lua can avoid copying to internal structures some
+    parts of the chunk. (In general, a fixed buffer would keep its contents
+    until the end of the program, for instance with the chunk in ROM.) Moreover,
+    for a fixed buffer, the reader function should return the entire chunk in
+    the first read. (As an example, <b>luaL_loadbufferx</b> does that, which
+    means that you can use it to load fixed buffers.)</p>
+<p class="Pp">The function <b>lua_load</b> fully preserves the Lua stack through
+    the calls to the reader function, except that it may push some values for
+    internal use before the first call, and it restores the stack size to its
+    original size plus one (for the pushed result) after the last call.</p>
+<p class="Pp"><b>lua_load</b> can return <b>LUA_OK</b> , <b>LUA_ERRSYNTAX</b> ,
+    or <b>LUA_ERRMEM</b> <i>statuscodes</i> in Lua manual).</p>
+<p class="Pp">If the resulting function has upvalues, its first upvalue is set
+    to the value of the false global environment stored at index
+    <b>LUA_RIDX_GLOBALS</b> in the registry (see <i>registry</i> in Lua manual).
+    When loading main chunks, this upvalue will be the <b>_ENV</b> variable (see
+    <i>globalenv</i> in Lua manual). Other upvalues are initialized with
+  @nil.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function never raises any error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>1</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>0</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>lua_Reader</b>(3)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

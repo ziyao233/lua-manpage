@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_arith(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_arith(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_arith(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_arith</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>void lua_arith (lua_State *L, int op);</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Performs an arithmetic or bitwise operation over the two values
+    (or one, in the case of negations) at the top of the stack, with the value
+    on the top being the second operand, pops these values, and pushes the
+    result of the operation. The function follows the semantics of the
+    corresponding Lua operator (that is, it may call metamethods).</p>
+<p class="Pp">The value of <b>op</b> must be one of the following constants:</p>
+<dl class="Bl-tag">
+  <dt id="LUA_OPADD"><a class="permalink" href="#LUA_OPADD"><b>LUA_OPADD</b></a></dt>
+  <dd>performs addition ( <b>+</b> )</dd>
+  <dt id="LUA_OPSUB"><a class="permalink" href="#LUA_OPSUB"><b>LUA_OPSUB</b></a></dt>
+  <dd>performs subtraction ( <b>-</b> )</dd>
+  <dt id="LUA_OPMUL"><a class="permalink" href="#LUA_OPMUL"><b>LUA_OPMUL</b></a></dt>
+  <dd>performs multiplication ( <b>*</b> )</dd>
+  <dt id="LUA_OPDIV"><a class="permalink" href="#LUA_OPDIV"><b>LUA_OPDIV</b></a></dt>
+  <dd>performs float division ( <b>/</b> )</dd>
+  <dt id="LUA_OPIDIV"><a class="permalink" href="#LUA_OPIDIV"><b>LUA_OPIDIV</b></a></dt>
+  <dd>performs floor division ( <b>//</b> )</dd>
+  <dt id="LUA_OPMOD"><a class="permalink" href="#LUA_OPMOD"><b>LUA_OPMOD</b></a></dt>
+  <dd>performs modulo ( <b>%</b> )</dd>
+  <dt id="LUA_OPPOW"><a class="permalink" href="#LUA_OPPOW"><b>LUA_OPPOW</b></a></dt>
+  <dd>performs exponentiation ( <b>^</b> )</dd>
+  <dt id="LUA_OPUNM"><a class="permalink" href="#LUA_OPUNM"><b>LUA_OPUNM</b></a></dt>
+  <dd>performs mathematical negation (unary <b>-</b> )</dd>
+  <dt id="LUA_OPBNOT"><a class="permalink" href="#LUA_OPBNOT"><b>LUA_OPBNOT</b></a></dt>
+  <dd>performs bitwise NOT ( <b>~</b> )</dd>
+  <dt id="LUA_OPBAND"><a class="permalink" href="#LUA_OPBAND"><b>LUA_OPBAND</b></a></dt>
+  <dd>performs bitwise AND ( <b>&amp;</b> )</dd>
+  <dt id="LUA_OPBOR"><a class="permalink" href="#LUA_OPBOR"><b>LUA_OPBOR</b></a></dt>
+  <dd>performs bitwise OR ( <b>|</b> )</dd>
+  <dt id="LUA_OPBXOR"><a class="permalink" href="#LUA_OPBXOR"><b>LUA_OPBXOR</b></a></dt>
+  <dd>performs bitwise exclusive OR ( <b>~</b> )</dd>
+  <dt id="LUA_OPSHL"><a class="permalink" href="#LUA_OPSHL"><b>LUA_OPSHL</b></a></dt>
+  <dd>performs left shift ( <b>&lt;&lt;</b> )</dd>
+  <dt id="LUA_OPSHR"><a class="permalink" href="#LUA_OPSHR"><b>LUA_OPSHR</b></a></dt>
+  <dd>performs right shift ( <b>&gt;&gt;</b> )</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function can run arbitrary Lua code, any error could be
+    raised.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>1</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>2 or 1</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_call(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_call(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_call(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_call</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>void lua_call (lua_State *L, int nargs, int nresults);</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Calls a function. Like regular Lua calls, <b>lua_call</b> respects
+    the <b>__call</b> metamethod. So, here the word <i>function</i> means any
+    callable value.</p>
+<p class="Pp">To do a call you must use the following protocol: first, the
+    function to be called is pushed onto the stack; then, the arguments to the
+    call are pushed in direct order; that is, the first argument is pushed
+    first. Finally you call <b>lua_call</b> ; <b>nargs</b> is the number of
+    arguments that you pushed onto the stack. When the function returns, all
+    arguments and the function value are popped and the call results are pushed
+    onto the stack. The number of results is adjusted to <b>nresults</b> ,
+    unless <b>nresults</b> is <b>LUA_MULTRET</b> , which makes all results from
+    the function to be pushed. In the first case, an explicit number of results,
+    the caller must ensure that the stack has space for the returned values. In
+    the second case, all results, Lua takes care that the returned values fit
+    into the stack space, but it does not ensure any extra space in the stack.
+    The function results are pushed onto the stack in direct order (the first
+    result is pushed first), so that after the call the last result is on the
+    top of the stack.</p>
+<p class="Pp">The maximum value for <b>nresults</b> is 250.</p>
+<p class="Pp">Any error while calling and running the function is propagated
+    upwards (with a <b>longjmp</b> ).</p>
+<p class="Pp">The following example shows how the host program can do the
+    equivalent to this Lua code:</p>
+<pre>
+a = f(&quot;how&quot;, t.x, 14)
+</pre>
+Here it is false in C :
+<pre>
+lua_getglobal(L, &quot;f&quot;);                  /* function to be called */
+lua_pushliteral(L, &quot;how&quot;);                       /* 1st argument */
+lua_getglobal(L, &quot;t&quot;);                    /* table to be indexed */
+lua_getfield(L, -1, &quot;x&quot;);        /* push result of t.x (2nd arg) */
+lua_remove(L, -2);                  /* remove 't' from the stack */
+lua_pushinteger(L, 14);                          /* 3rd argument */
+lua_call(L, 3, 1);     /* call 'f' with 3 arguments and 1 result */
+lua_setglobal(L, &quot;a&quot;);                         /* set global 'a' */
+</pre>
+Note that the code above is <i>balanced</i> : at its end, the stack is back to
+  its original configuration. This is considered good programming practice.
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function can run arbitrary Lua code, any error could be
+    raised.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>nresults</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>nargs+1</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

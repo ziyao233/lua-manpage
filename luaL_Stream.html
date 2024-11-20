@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>luaL_Stream(3type)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">luaL_Stream(3type)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">luaL_Stream(3type)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">luaL_Stream</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lauxlib.h&gt;</b></p>
+<p class="Pp"><b>typedef struct luaL_Stream {</b>
+  <br/>
+   FILE *f;
+  <br/>
+   lua_CFunction closef; } luaL_Stream;</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The standard representation for false file handles used by the
+    standard I/O library.</p>
+<p class="Pp">A file handle is implemented as a full userdata, with a metatable
+    called <b>LUA_FILEHANDLE</b> (where <b>LUA_FILEHANDLE</b> is a macro with
+    the actual metatable's name). The metatable is created by the I/O library
+    (see <i>luaL_newmetatable</i> in Lua manual).</p>
+<p class="Pp">This userdata must start with the structure <b>luaL_Stream</b> ;
+    it can contain other data after this initial structure. The field <b>f</b>
+    points to the corresponding C stream, or it is <b>NULL</b> to indicate an
+    incompletely created handle. The field <b>closef</b> points to a Lua
+    function that will be called to close the stream when the handle is closed
+    or collected; this function receives the file handle as its sole argument
+    and must return either a true value, in case of success, or a false value
+    plus an error message, in case of error. Once Lua calls this field, it
+    changes the field value to <b>NULL</b> to signal that the handle is
+  closed.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_Hook(3type)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_Hook(3type)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_Hook(3type)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_Hook</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>typedef void (*lua_Hook) (lua_State *L, lua_Debug *ar);</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Type for debugging hook functions.</p>
+<p class="Pp">Whenever a hook is called, its <b>ar</b> argument has its field
+    <b>event</b> set to the specific event that triggered the hook. Lua
+    identifies these events with the following constants: <b>LUA_HOOKCALL</b> ,
+    <b>LUA_HOOKRET</b> , <b>LUA_HOOKTAILCALL</b> , <b>LUA_HOOKLINE</b> , and
+    <b>LUA_HOOKCOUNT</b> <b>currentline</b> is also set. To get the value of any
+    other field in <b>ar</b> , the hook must call <b>lua_getinfo</b></p>
+<p class="Pp">For call events, <b>event</b> can be <b>LUA_HOOKCALL</b> , the
+    normal value, or <b>LUA_HOOKTAILCALL</b> , for a tail call; in this case,
+    there will be no corresponding return event.</p>
+<p class="Pp">While Lua is running a hook, it disables other calls to hooks.
+    Therefore, if a hook calls back Lua to execute a function or a chunk, this
+    execution occurs without any calls to hooks.</p>
+<p class="Pp">Hook functions cannot have continuations, that is, they cannot
+    call <b>lua_yieldk</b> , <b>lua_pcallk</b> , or <b>lua_callk</b> with a
+    non-null <b>k</b></p>
+<p class="Pp">Hook functions can yield under the following conditions: Only
+    count and line events can yield; to yield, a hook function must finish its
+    execution calling <b>lua_yield</b> with <b>nresults</b> equal to zero (that
+    is, with no values).</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

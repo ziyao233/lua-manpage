@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_getinfo(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_getinfo(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_getinfo(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_getinfo</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>int lua_getinfo (lua_State *L, const char *what, lua_Debug
+    *ar);</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Gets information about a specific function or function
+  invocation.</p>
+<p class="Pp">To get information about a function invocation, the parameter
+    <b>ar</b> must be a valid activation record that was filled by a previous
+    call to <b>lua_getstack</b> or given as argument to a hook (see
+    <b>lua_Hook(3)</b>)</p>
+<p class="Pp">To get information about a function, you push it onto the stack
+    and start the <b>what</b> string with the character <b>'&gt;'</b>
+    <b>lua_getinfo</b> pops the function from the top of the stack.) For
+    instance, to know in which line a function <b>f</b> was defined, you can
+    write the following code:</p>
+<pre>
+lua_Debug ar;
+lua_getglobal(L, &quot;f&quot;);  /* get global 'f' */
+lua_getinfo(L, &quot;&gt;S&quot;, &amp;ar);
+printf(&quot;%d0, ar.linedefined);
+</pre>
+<p class="Pp">Each character in the string <b>what</b> selects some fields of
+    the structure <b>ar</b> to be filled or a value to be pushed on the stack.
+    (These characters are also documented in the declaration of the structure
+    <b>lua_Debug</b> , between parentheses in the comments following each
+    field.)</p>
+<dl class="Bl-tag">
+  <dt><b>'f'</b></dt>
+  <dd>pushes onto the stack the function that is running at the given
+    level;</dd>
+  <dt><b>'l'</b></dt>
+  <dd>fills in the field <b>currentline</b> ;</dd>
+  <dt><b>'n'</b></dt>
+  <dd>fills in the fields <b>name</b> and <b>namewhat</b> ;</dd>
+  <dt><b>'r'</b></dt>
+  <dd>fills in the fields <b>ftransfer</b> and <b>ntransfer</b> ;</dd>
+  <dt><b>'S'</b></dt>
+  <dd>fills in the fields <b>source</b> , <b>short_src</b> , <b>linedefined</b>
+      , <b>lastlinedefined</b> , and <b>what</b> ;</dd>
+  <dt><b>'t'</b></dt>
+  <dd>fills in the field <b>istailcall</b> ;</dd>
+  <dt><b>'u'</b></dt>
+  <dd>fills in the fields <b>nups</b> , <b>nparams</b> , and <b>isvararg</b>
+    ;</dd>
+  <dt><b>'L'</b></dt>
+  <dd>pushes onto the stack a table whose indices are the lines on the function
+      with some associated code, that is, the lines where you can put a break
+      point. (Lines with no code include empty lines and comments.) If this
+      option is given together with option <b>'f'</b> , its table is pushed
+      after the function. This is the only option that can raise a memory
+    error.</dd>
+</dl>
+<p class="Pp">This function returns 0 to signal an invalid option in <b>what</b>
+    ; even then the valid options are handled correctly.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function only raises out-of-memory error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>0 or 1 or 2</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>0 or 1</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>lua_Hook</b>(3)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

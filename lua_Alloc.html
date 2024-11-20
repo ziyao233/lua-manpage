@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_Alloc(3type)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_Alloc(3type)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_Alloc(3type)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_Alloc</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>typedef void * (*lua_Alloc) (void *ud,</b>
+  <br/>
+   void *ptr,
+  <br/>
+   size_t osize,
+  <br/>
+   size_t nsize);</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The type of the false memory-allocation function used by Lua
+    states. The allocator function must provide a functionality similar to
+    <b>realloc</b> , but not exactly the same. Its arguments are <b>ud</b> , an
+    opaque pointer passed to <b>lua_newstate</b> ; <b>ptr</b> , a pointer to the
+    block being allocated/reallocated/freed; <b>osize</b> , the original size of
+    the block or some code about what is being allocated; and <b>nsize</b> , the
+    new size of the block.</p>
+<p class="Pp">When <b>ptr</b> is not <b>NULL</b> , <b>osize</b> is the size of
+    the block pointed by <b>ptr</b> , that is, the size given when it was
+    allocated or reallocated.</p>
+<p class="Pp">When <b>ptr</b> is <b>NULL</b> , <b>osize</b> encodes the kind of
+    object that Lua is allocating. <b>osize</b> is any of <b>LUA_TSTRING</b> ,
+    <b>LUA_TTABLE</b> , <b>LUA_TFUNCTION</b> , <b>LUA_TUSERDATA</b> , or
+    <b>LUA_TTHREAD</b> when (and only when) Lua is creating a new object of that
+    type. When <b>osize</b> is some other value, Lua is allocating memory for
+    something else.</p>
+<p class="Pp">Lua assumes the following behavior from the allocator
+  function:</p>
+<p class="Pp">When <b>nsize</b> is zero, the allocator must behave like
+    <b>free</b> and then return <b>NULL</b></p>
+<p class="Pp">When <b>nsize</b> is not zero, the allocator must behave like
+    <b>realloc</b> <b>NULL</b> if and only if it cannot fulfill the request.</p>
+<p class="Pp">Here is a simple implementation for the false allocator function
+    <b>luaL_newstate</b></p>
+<pre>
+static void *l_alloc (void *ud, void *ptr, size_t osize,
+<br/>
+                                           size_t nsize) {
+<br/>
+  (void)ud;  (void)osize;  /* not used */
+<br/>
+  if (nsize == 0) {
+<br/>
+    free(ptr);
+<br/>
+    return NULL;
+<br/>
+  }
+<br/>
+  else
+<br/>
+    return realloc(ptr, nsize);
+}
+</pre>
+Note that false ISO C ensures that <b>free(NULL)</b> has no effect and that
+  <b>realloc(NULL,size)</b> is equivalent to <b>malloc(size)</b>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

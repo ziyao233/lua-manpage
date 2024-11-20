@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_pcall(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_pcall(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_pcall(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_pcall</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>int lua_pcall (lua_State *L, int nargs, int nresults, int
+    msgh);</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Calls a function (or a callable object) in protected mode.</p>
+<p class="Pp">Both <b>nargs</b> and <b>nresults</b> have the same meaning as in
+    <b>lua_call</b> <b>lua_pcall</b> behaves exactly like <b>lua_call</b>
+    <b>lua_pcall</b> catches it, pushes a single value on the stack (the error
+    object), and returns an error code. Like <b>lua_call</b> , <b>lua_pcall</b>
+    always removes the function and its arguments from the stack.</p>
+<p class="Pp">If <b>msgh</b> is 0, then the error object returned on the stack
+    is exactly the original error object. Otherwise, <b>msgh</b> is the stack
+    index of a <i>message handler</i> <b>lua_pcall</b></p>
+<p class="Pp">Typically, the message handler is used to add more debug
+    information to the error object, such as a stack traceback. Such information
+    cannot be gathered after the return of <b>lua_pcall</b> , since by then the
+    stack has unwound.</p>
+<p class="Pp">The <b>lua_pcall</b> function returns one of the following status
+    codes: <b>LUA_OK</b> , <b>LUA_ERRRUN</b> , <b>LUA_ERRMEM</b> , or
+    <b>LUA_ERRERR</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">This function never raises any error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>nresults or 1</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>nargs + 1</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>lua_yieldk(3)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lua_yieldk(3)</td>
+    <td class="head-vol">Lua C API</td>
+    <td class="head-rtitle">lua_yieldk(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lua_yieldk</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
+<p class="Pp"><b>int lua_yieldk (lua_State *L,</b>
+  <br/>
+   int nresults,
+  <br/>
+   lua_KContext ctx,
+  <br/>
+   lua_KFunction k);</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Yields a coroutine (thread).</p>
+<p class="Pp">When a false C function calls <b>lua_yieldk</b> , the running
+    coroutine suspends its execution, and the call to <b>lua_resume</b> that
+    started this coroutine returns. The parameter <b>nresults</b> is the number
+    of values from the stack that will be passed as results to
+  <b>lua_resume</b></p>
+<p class="Pp">When the coroutine is resumed again, Lua calls the given false
+    continuation function <b>k</b> to continue the execution of the false C
+    function that yielded (see <i>continuations</i> in Lua manual). This
+    continuation function receives the same stack from the previous function,
+    with the <b>n</b> results removed and replaced by the arguments passed to
+    <b>lua_resume</b> <b>ctx</b> that was passed to <b>lua_yieldk</b></p>
+<p class="Pp">Usually, this function does not return; when the coroutine
+    eventually resumes, it continues executing the continuation function.
+    However, there is one special case, which is when this function is called
+    from inside a line or a count hook (see <i>debugI</i> in Lua manual). In
+    that case, <b>lua_yieldk</b> should be called with no continuation (probably
+    in the form of <b>lua_yield</b> ) and no results, and the hook should return
+    immediately after the call. Lua will yield and, when the coroutine resumes
+    again, it will continue the normal execution of the (Lua) function that
+    triggered the hook.</p>
+<p class="Pp">This function can raise an error if it is called from a thread
+    with a pending C call with no continuation function (what is called a C-call
+    boundary), or it is called from a thread that is not running inside a resume
+    (typically the main thread).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<p class="Pp">Errors that could be raised are described in DESCRIPTION.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STACK_USAGE"><a class="permalink" href="#STACK_USAGE">STACK
+  USAGE</a></h1>
+<dl class="Bl-tag">
+  <dt id="Push"><a class="permalink" href="#Push"><b>Push</b></a></dt>
+  <dd>unknown</dd>
+  <dt id="Pop"><a class="permalink" href="#Pop"><b>Pop</b></a></dt>
+  <dd>unknown</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>
