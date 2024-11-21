@@ -156,6 +156,8 @@ handleStyle(src)
 	       gsub("@(%a+)", "\n.B %1\n"):
 	       -- strip spaces at the start of line
 	       gsub("\n%s+", "\n"):
+	       -- avoid dots at start of the line being recognized as a command
+	       gsub("\n(%.%s)", "\n.R %1"):
 	       -- restore verbatim blocks
 	       gsub("\1{(%d+)}", function(n)
 	       		return ("\n.EX\n%s\n.EE\n"):
