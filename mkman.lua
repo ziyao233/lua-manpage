@@ -221,9 +221,12 @@ convert2man(src)
 	addbuf(buf, ".SH NAME\n%s", name);
 
 	addbuf(buf, ".SH SYNOPSIS");
+	addbuf(buf, ".nf");
 	addbuf(buf, ".B #include <%s>",
 		    name:match("^luaL_") and "lauxlib.h" or "lua.h");
-	addbuf(buf, ".P\n.B\n%s", prototype);
+	addbuf(buf, ".P%s", ("\1" .. prototype):
+			  gsub("[\1\n]+([^\n]+)", '\n.B "%1"'));
+	addbuf(buf, ".fi");
 
 	local apiiTag;
 	desc = handleTag(desc, "apii", function(spec)

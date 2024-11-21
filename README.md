@@ -39,8 +39,8 @@ A pack of HTML pages generated from Lua git repository is hosted on
 ## Limitations
 
 - Extra spaces in generated manpages
-- Function/structure definitions with multiple lines may be rendered
-  incorrectly.
+- ~~Function/structure definitions with multiple lines may be rendered
+  incorrectly.~~
 - Check TODOs in `mkman.lua`!
 
 ## License
