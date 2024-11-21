@@ -114,7 +114,9 @@ handleStyleSub = function(src)
 			content = content:sub(2, -2);
 
 			local replacement = styleTable[op];
-			if not replacement and replacement ~= false then
+			if replacement == false then
+				return handleStyleSub(content);
+			elseif not replacement then
 				io.stderr:write(("%s is not handled!\n"):
 						format(op));
 				return content;
