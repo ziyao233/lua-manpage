@@ -127,6 +127,7 @@ handleStyleSub = function(src)
 			end
 	end);
 end
+
 local function
 handleStyle(src)
 	local verbatimList = {};
@@ -151,9 +152,10 @@ handleStyle(src)
 	src = gsub(src, "\n", "\n.P\n");
 
 	return handleStyleSub(src):
+	       -- handle entities like @nil @false @fail
+	       gsub("@(%a+)", "\n.B %1\n"):
 	       -- strip spaces at the start of line
 	       gsub("\n%s+", "\n"):
-	       gsub("@nil", "\n.B nil\n"):
 	       -- restore verbatim blocks
 	       gsub("\1{(%d+)}", function(n)
 	       		return ("\n.EX\n%s\n.EE\n"):
