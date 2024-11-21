@@ -31,24 +31,21 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>typedef void * (*lua_Alloc) (void *ud,</b>
-  <br/>
-   void *ptr,
-  <br/>
-   size_t osize,
-  <br/>
-   size_t nsize);</p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>typedef void * (*lua_Alloc) (void *ud,</b>
+<b>                             void *ptr,</b>
+<b>                             size_t osize,</b>
+<b>                             size_t nsize);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">The type of the false memory-allocation function used by Lua
-    states. The allocator function must provide a functionality similar to
-    <b>realloc</b> , but not exactly the same. Its arguments are <b>ud</b> , an
-    opaque pointer passed to <b>lua_newstate</b> ; <b>ptr</b> , a pointer to the
-    block being allocated/reallocated/freed; <b>osize</b> , the original size of
-    the block or some code about what is being allocated; and <b>nsize</b> , the
-    new size of the block.</p>
+<p class="Pp">The type of the memory-allocation function used by Lua states. The
+    allocator function must provide a functionality similar to <b>realloc</b> ,
+    but not exactly the same. Its arguments are <b>ud</b> , an opaque pointer
+    passed to <b>lua_newstate</b> ; <b>ptr</b> , a pointer to the block being
+    allocated/reallocated/freed; <b>osize</b> , the original size of the block
+    or some code about what is being allocated; and <b>nsize</b> , the new size
+    of the block.</p>
 <p class="Pp">When <b>ptr</b> is not <b>NULL</b> , <b>osize</b> is the size of
     the block pointed by <b>ptr</b> , that is, the size given when it was
     allocated or reallocated.</p>
@@ -65,8 +62,8 @@
 <p class="Pp">When <b>nsize</b> is not zero, the allocator must behave like
     <b>realloc</b> . In particular, the allocator returns <b>NULL</b> if and
     only if it cannot fulfill the request.</p>
-<p class="Pp">Here is a simple implementation for the false allocator function .
-    It is used in the auxiliary library by <b>luaL_newstate</b> .</p>
+<p class="Pp">Here is a simple implementation for the allocator function. It is
+    used in the auxiliary library by <b>luaL_newstate</b> .</p>
 <pre>
 static void *l_alloc (void *ud, void *ptr, size_t osize,
 <br/>
@@ -87,7 +84,7 @@ static void *l_alloc (void *ud, void *ptr, size_t osize,
     return realloc(ptr, nsize);
 }
 </pre>
-Note that false ISO C ensures that <b>free(NULL)</b> has no effect and that
+Note that ISO C ensures that <b>free(NULL)</b> has no effect and that
   <b>realloc(NULL,size)</b> is equivalent to <b>malloc(size)</b> .
 </section>
 </div>

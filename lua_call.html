@@ -31,8 +31,8 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>void lua_call (lua_State *L, int nargs, int nresults);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>void lua_call (lua_State *L, int nargs, int nresults);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -62,7 +62,7 @@
 <pre>
 a = f(&quot;how&quot;, t.x, 14)
 </pre>
-Here it is false in C :
+Here it is in C:
 <pre>
 lua_getglobal(L, &quot;f&quot;);                  /* function to be called */
 lua_pushliteral(L, &quot;how&quot;);                       /* 1st argument */

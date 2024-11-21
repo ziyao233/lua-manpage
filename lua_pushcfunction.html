@@ -31,13 +31,13 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>void lua_pushcfunction (lua_State *L, lua_CFunction f);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>void lua_pushcfunction (lua_State *L, lua_CFunction f);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Pushes a false C function onto the stack. This function is
-    equivalent to <b>lua_pushcclosure</b> with no upvalues.</p>
+<p class="Pp">Pushes a C function onto the stack. This function is equivalent to
+    <b>lua_pushcclosure</b> with no upvalues.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

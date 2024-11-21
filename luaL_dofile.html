@@ -31,8 +31,8 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lauxlib.h&gt;</b></p>
-<p class="Pp"><b>int luaL_dofile (lua_State *L, const char *filename);</b></p>
+<pre><b>#include &lt;lauxlib.h&gt;</b></pre>
+<pre><b>int luaL_dofile (lua_State *L, const char *filename);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -41,8 +41,8 @@
 <pre>
 (luaL_loadfile(L, filename) || lua_pcall(L, 0, LUA_MULTRET, 0))
 </pre>
-<p class="Pp">It false returns 0 ( <b>LUA_OK</b> ) if there are no errors, or 1
-    in case of errors.</p>
+<p class="Pp">It returns 0 ( <b>LUA_OK</b> ) if there are no errors, or 1 in
+    case of errors.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

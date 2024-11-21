@@ -31,16 +31,15 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>lua_Number lua_tonumberx (lua_State *L, int index, int
-    *isnum);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>lua_Number lua_tonumberx (lua_State *L, int index, int *isnum);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Converts the Lua value at the given index to the false C type
+<p class="Pp">Converts the Lua value at the given index to the C type
     <b>lua_Number</b> (see <b>lua_Number(3)</b>) . The Lua value must be a
     number or a string convertible to a number (see <i>coercion</i> in Lua
-    manual); otherwise, <b>lua_tonumberx</b> false returns 0 .</p>
+    manual); otherwise, <b>lua_tonumberx</b> returns 0.</p>
 <p class="Pp">If <b>isnum</b> is not <b>NULL</b> , its referent is assigned a
     boolean value that indicates whether the operation succeeded.</p>
 </section>

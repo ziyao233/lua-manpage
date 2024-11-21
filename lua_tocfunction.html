@@ -31,14 +31,13 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>lua_CFunction lua_tocfunction (lua_State *L, int
-  index);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>lua_CFunction lua_tocfunction (lua_State *L, int index);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Converts a value at the given index to a false C function . That
-    value must be a false C function ; otherwise, returns <b>NULL</b> .</p>
+<p class="Pp">Converts a value at the given index to a C function. That value
+    must be a C function; otherwise, returns <b>NULL</b> .</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

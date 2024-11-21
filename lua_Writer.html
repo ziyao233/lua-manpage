@@ -31,14 +31,11 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>typedef int (*lua_Writer) (lua_State *L,</b>
-  <br/>
-   const void* p,
-  <br/>
-   size_t sz,
-  <br/>
-   void* ud);</p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>typedef int (*lua_Writer) (lua_State *L,</b>
+<b>                           const void* p,</b>
+<b>                           size_t sz,</b>
+<b>                           void* ud);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -49,8 +46,8 @@
 <p class="Pp">After <b>lua_dump</b> writes its last piece, it will signal that
     by calling the writer function one more time, with a <b>NULL</b> buffer (and
     size 0).</p>
-<p class="Pp">The writer returns an error code: false 0 means no errors; any
-    other value means an error and stops <b>lua_dump</b> from calling the writer
+<p class="Pp">The writer returns an error code: 0 means no errors; any other
+    value means an error and stops <b>lua_dump</b> from calling the writer
     again.</p>
 </section>
 </div>

@@ -31,18 +31,17 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lauxlib.h&gt;</b></p>
-<p class="Pp"><b>typedef struct luaL_Stream {</b>
-  <br/>
-   FILE *f;
-  <br/>
-   lua_CFunction closef; } luaL_Stream;</p>
-<p class="Pp"></p>
+<pre><b>#include &lt;lauxlib.h&gt;</b></pre>
+<pre><b>typedef struct luaL_Stream {</b>
+<b>  FILE *f;</b>
+<b>  lua_CFunction closef;</b>
+<b>} luaL_Stream;</b>
+</pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">The standard representation for false file handles used by the
-    standard I/O library.</p>
+<p class="Pp">The standard representation for file handles used by the standard
+    I/O library.</p>
 <p class="Pp">A file handle is implemented as a full userdata, with a metatable
     called <b>LUA_FILEHANDLE</b> (where <b>LUA_FILEHANDLE</b> is a macro with
     the actual metatable's name). The metatable is created by the I/O library

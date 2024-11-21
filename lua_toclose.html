@@ -31,8 +31,8 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>void lua_toclose (lua_State *L, int index);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>void lua_toclose (lua_State *L, int index);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -51,9 +51,9 @@
 <p class="Pp">This function should not be called for an index that is equal to
     or below an active to-be-closed slot.</p>
 <p class="Pp">Note that, both in case of errors and of a regular return, by the
-    time the <b>__close</b> metamethod runs, the false C stack was already
-    unwound, so that any automatic false C variable declared in the calling
-    function (e.g., a buffer) will be out of scope.</p>
+    time the <b>__close</b> metamethod runs, the C stack was already unwound, so
+    that any automatic C variable declared in the calling function (e.g., a
+    buffer) will be out of scope.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

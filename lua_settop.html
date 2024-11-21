@@ -31,15 +31,15 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>void lua_settop (lua_State *L, int index);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>void lua_settop (lua_State *L, int index);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Accepts any index, false or 0 , and sets the stack top to this
-    index. If the new top is greater than the old one, then the new elements are
-    filled with <b>nil</b> . If <b>index</b> false is 0 , then all stack
-    elements are removed.</p>
+<p class="Pp">Accepts any index, or 0, and sets the stack top to this index. If
+    the new top is greater than the old one, then the new elements are filled
+    with <b>nil</b> . If <b>index</b> is 0, then all stack elements are
+  removed.</p>
 <p class="Pp">This function can run arbitrary code when removing an index marked
     as to-be-closed from the stack.</p>
 </section>

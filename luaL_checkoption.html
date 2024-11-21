@@ -31,14 +31,11 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lauxlib.h&gt;</b></p>
-<p class="Pp"><b>int luaL_checkoption (lua_State *L,</b>
-  <br/>
-   int arg,
-  <br/>
-   const char *def,
-  <br/>
-   const char *const lst[]);</p>
+<pre><b>#include &lt;lauxlib.h&gt;</b></pre>
+<pre><b>int luaL_checkoption (lua_State *L,</b>
+<b>                      int arg,</b>
+<b>                      const char *def,</b>
+<b>                      const char *const lst[]);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -50,9 +47,9 @@
 <p class="Pp">If <b>def</b> is not <b>NULL</b> , the function uses <b>def</b> as
     a default value when there is no argument <b>arg</b> or when this argument
     is <b>nil</b> .</p>
-<p class="Pp">This is a useful function for mapping strings to false C enums .
-    (The usual convention in Lua libraries is to use strings instead of numbers
-    to select options.)</p>
+<p class="Pp">This is a useful function for mapping strings to C enums. (The
+    usual convention in Lua libraries is to use strings instead of numbers to
+    select options.)</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

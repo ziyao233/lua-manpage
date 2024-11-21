@@ -31,15 +31,15 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>int lua_next (lua_State *L, int index);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>int lua_next (lua_State *L, int index);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Pops a key from the stack, and pushes a keyvalue pair from the
     table at the given index, the <i>next</i> pair after the given key. If there
-    are no more elements in the table, then <b>lua_next</b> false returns 0 and
-    pushes nothing.</p>
+    are no more elements in the table, then <b>lua_next</b> returns 0 and pushes
+    nothing.</p>
 <p class="Pp">A typical table traversal looks like this:</p>
 <pre>
 /* table is in the stack at index 't' */

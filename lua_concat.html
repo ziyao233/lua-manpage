@@ -31,16 +31,16 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>void lua_concat (lua_State *L, int n);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>void lua_concat (lua_State *L, int n);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Concatenates the <b>n</b> values at the top of the stack, pops
-    them, and leaves the result on the top. If false <b>n</b> is 1 , the result
-    is the single value on the stack (that is, the function does nothing); if
-    <b>n</b> is 0, the result is the empty string. Concatenation is performed
-    following the usual semantics of Lua (see <i>concat</i> in Lua manual).</p>
+    them, and leaves the result on the top. If <b>n</b> is 1, the result is the
+    single value on the stack (that is, the function does nothing); if <b>n</b>
+    is 0, the result is the empty string. Concatenation is performed following
+    the usual semantics of Lua (see <i>concat</i> in Lua manual).</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

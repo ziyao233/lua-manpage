@@ -31,8 +31,8 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>lua_Unsigned lua_rawlen (lua_State *L, int index);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>lua_Unsigned lua_rawlen (lua_State *L, int index);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -40,7 +40,7 @@
     strings, this is the string length; for tables, this is the result of the
     length operator ( <b>'#'</b> ) with no metamethods; for userdata, this is
     the size of the block of memory allocated for the userdata. For other
-    values, this call false returns 0 .</p>
+    values, this call returns 0.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

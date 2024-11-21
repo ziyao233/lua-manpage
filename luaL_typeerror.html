@@ -31,15 +31,14 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lauxlib.h&gt;</b></p>
-<p class="Pp"><b>int luaL_typeerror (lua_State *L, int arg, const char
-    *tname);</b></p>
+<pre><b>#include &lt;lauxlib.h&gt;</b></pre>
+<pre><b>int luaL_typeerror (lua_State *L, int arg, const char *tname);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Raises a type error for the argument <b>arg</b> of the false C
-    function that called it, using a standard message; <b>tname</b> is a
-    <i>name</i> for the expected type. This function never returns.</p>
+<p class="Pp">Raises a type error for the argument <b>arg</b> of the C function
+    that called it, using a standard message; <b>tname</b> is a <i>name</i> for
+    the expected type. This function never returns.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

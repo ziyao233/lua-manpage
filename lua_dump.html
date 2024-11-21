@@ -31,14 +31,11 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>int lua_dump (lua_State *L,</b>
-  <br/>
-   lua_Writer writer,
-  <br/>
-   void *data,
-  <br/>
-   int strip);</p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>int lua_dump (lua_State *L,</b>
+<b>                        lua_Writer writer,</b>
+<b>                        void *data,</b>
+<b>                        int strip);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -54,7 +51,7 @@
 <p class="Pp">If <b>strip</b> is true, the binary representation may not include
     all debug information about the function, to save space.</p>
 <p class="Pp">The value returned is the error code returned by the last call to
-    the writer; false 0 means no errors.</p>
+    the writer; 0 means no errors.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

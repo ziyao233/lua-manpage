@@ -31,14 +31,13 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>void lua_setallocf (lua_State *L, lua_Alloc f, void
-  *ud);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>void lua_setallocf (lua_State *L, lua_Alloc f, void *ud);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Changes the false allocator function of a given state to <b>f</b>
-    with user data <b>ud</b> .</p>
+<p class="Pp">Changes the allocator function of a given state to <b>f</b> with
+    user data <b>ud</b> .</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

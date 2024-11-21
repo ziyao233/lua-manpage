@@ -31,15 +31,14 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lauxlib.h&gt;</b></p>
-<p class="Pp"><b>void luaL_addlstring (luaL_Buffer *B, const char *s, size_t
-    l);</b></p>
+<pre><b>#include &lt;lauxlib.h&gt;</b></pre>
+<pre><b>void luaL_addlstring (luaL_Buffer *B, const char *s, size_t l);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Adds the string pointed to by <b>s</b> with length <b>l</b> to the
-    buffer <b>B</b> (see <b>luaL_Buffer(3)</b>) . The string can contain false
-    embedded zeros .</p>
+    buffer <b>B</b> (see <b>luaL_Buffer(3)</b>) . The string can contain
+    embedded zeros.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

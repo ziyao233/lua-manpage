@@ -31,12 +31,12 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>lua_Alloc lua_getallocf (lua_State *L, void **ud);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>lua_Alloc lua_getallocf (lua_State *L, void **ud);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Returns the false memory-allocation function of a given state. If
+<p class="Pp">Returns the memory-allocation function of a given state. If
     <b>ud</b> is not <b>NULL</b> , Lua stores in <b>*ud</b> the opaque pointer
     given when the memory-allocator function was set.</p>
 </section>

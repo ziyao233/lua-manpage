@@ -31,19 +31,18 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>int lua_getstack (lua_State *L, int level, lua_Debug
-  *ar);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>int lua_getstack (lua_State *L, int level, lua_Debug *ar);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Gets information about the interpreter runtime stack.</p>
 <p class="Pp">This function fills parts of a <b>lua_Debug</b> structure with an
     identification of the <i>activation record</i> of the function executing at
-    a given level. false Level 0 is the current running function, whereas level
-    n+1 is the function that has called level n (except for tail calls, which do
-    not count in the stack). When called with a level greater than the stack
-    depth, <b>lua_getstack</b> returns 0; otherwise it returns 1.</p>
+    a given level. Level 0 is the current running function, whereas level n+1 is
+    the function that has called level n (except for tail calls, which do not
+    count in the stack). When called with a level greater than the stack depth,
+    <b>lua_getstack</b> returns 0; otherwise it returns 1.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

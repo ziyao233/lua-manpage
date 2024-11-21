@@ -31,45 +31,28 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>typedef struct lua_Debug {</b>
-  <br/>
-   int event;
-  <br/>
-   const char *name; /* (n) */
-  <br/>
-   const char *namewhat; /* (n) */
-  <br/>
-   const char *what; /* (S) */
-  <br/>
-   const char *source; /* (S) */
-  <br/>
-   size_t srclen; /* (S) */
-  <br/>
-   int currentline; /* (l) */
-  <br/>
-   int linedefined; /* (S) */
-  <br/>
-   int lastlinedefined; /* (S) */
-  <br/>
-   unsigned char nups; /* (u) number of upvalues */
-  <br/>
-   unsigned char nparams; /* (u) number of parameters */
-  <br/>
-   char isvararg; /* (u) */
-  <br/>
-   char istailcall; /* (t) */
-  <br/>
-   int ftransfer; /* (r) index of first value transferred */
-  <br/>
-   int ntransfer; /* (r) number of transferred values */
-  <br/>
-   char short_src[LUA_IDSIZE]; /* (S) */
-  <br/>
-   /* private part */
-  <br/>
-   @rep{other fields} } lua_Debug;</p>
-<p class="Pp"></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>typedef struct lua_Debug {</b>
+<b>  int event;</b>
+<b>  const char *name;           /* (n) */</b>
+<b>  const char *namewhat;       /* (n) */</b>
+<b>  const char *what;           /* (S) */</b>
+<b>  const char *source;         /* (S) */</b>
+<b>  size_t srclen;              /* (S) */</b>
+<b>  int currentline;            /* (l) */</b>
+<b>  int linedefined;            /* (S) */</b>
+<b>  int lastlinedefined;        /* (S) */</b>
+<b>  unsigned char nups;         /* (u) number of upvalues */</b>
+<b>  unsigned char nparams;      /* (u) number of parameters */</b>
+<b>  char isvararg;              /* (u) */</b>
+<b>  char istailcall;            /* (t) */</b>
+<b>  int ftransfer;              /* (r) index of first value transferred */</b>
+<b>  int ntransfer;              /* (r) number of transferred values */</b>
+<b>  char short_src[LUA_IDSIZE]; /* (S) */</b>
+<b>  /* private part */</b>
+<b>  @rep{other fields}</b>
+<b>} lua_Debug;</b>
+</pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -100,7 +83,7 @@
   <dd>the line number where the definition of the function ends.</dd>
   <dt id="what"><a class="permalink" href="#what"><b>what</b></a></dt>
   <dd>the string <b>Lua</b> if the function is a Lua function, <b>C</b> if it is
-      a false C function , <b>main</b> if it is the main part of a chunk.</dd>
+      a C function, <b>main</b> if it is the main part of a chunk.</dd>
   <dt id="currentline"><a class="permalink" href="#currentline"><b>currentline</b></a></dt>
   <dd>the current line where the given function is executing. When no line
       information is available, <b>currentline</b> is set to -1.</dd>
@@ -123,11 +106,10 @@
   <dt id="nups"><a class="permalink" href="#nups"><b>nups</b></a></dt>
   <dd>the number of upvalues of the function.</dd>
   <dt id="nparams"><a class="permalink" href="#nparams"><b>nparams</b></a></dt>
-  <dd>the number of parameters of the function (always false 0 for false C
-      functions ).</dd>
+  <dd>the number of parameters of the function (always 0 for C functions).</dd>
   <dt id="isvararg"><a class="permalink" href="#isvararg"><b>isvararg</b></a></dt>
-  <dd>true if the function is a variadic function (always true for false C
-      functions ).</dd>
+  <dd>true if the function is a variadic function (always true for C
+    functions).</dd>
   <dt id="ftransfer"><a class="permalink" href="#ftransfer"><b>ftransfer</b></a></dt>
   <dd>the index in the stack of the first value being <i>transferred</i> , that
       is, parameters in a call or return values in a return. (The other values

@@ -31,16 +31,12 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>int lua_load (lua_State *L,</b>
-  <br/>
-   lua_Reader reader,
-  <br/>
-   void *data,
-  <br/>
-   const char *chunkname,
-  <br/>
-   const char *mode);</p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>int lua_load (lua_State *L,</b>
+<b>              lua_Reader reader,</b>
+<b>              void *data,</b>
+<b>              const char *chunkname,</b>
+<b>              const char *mode);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -76,7 +72,7 @@
     corresponding to errors raised by the read function (see <i>statuscodes</i>
     in Lua manual).</p>
 <p class="Pp">If the resulting function has upvalues, its first upvalue is set
-    to the value of the false global environment stored at index
+    to the value of the global environment stored at index
     <b>LUA_RIDX_GLOBALS</b> in the registry (see <i>registry</i> in Lua manual).
     When loading main chunks, this upvalue will be the <b>_ENV</b> variable (see
     <i>globalenv</i> in Lua manual). Other upvalues are initialized with

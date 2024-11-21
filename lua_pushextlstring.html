@@ -31,10 +31,9 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>const char *(lua_pushextlstring) (lua_State *L,</b>
-  <br/>
-   const char *s, size_t len, lua_Alloc falloc, void *ud);</p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>const char *(lua_pushextlstring) (lua_State *L,</b>
+<b>                const char *s, size_t len, lua_Alloc falloc, void *ud);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -50,9 +49,9 @@
     be called with the given <b>ud</b> , the string <b>s</b> as the block, the
     length plus one (to account for the ending zero) as the old size, and 0 as
     the new size.</p>
-<p class="Pp">Lua always false internalizes strings with lengths up to 40
-    characters. So, for strings in that range, this function will immediately
-    internalize the string and call <b>falloc</b> to free the buffer.</p>
+<p class="Pp">Lua always internalizes strings with lengths up to 40 characters.
+    So, for strings in that range, this function will immediately internalize
+    the string and call <b>falloc</b> to free the buffer.</p>
 <p class="Pp">Even when using an external buffer, Lua still has to allocate a
     header for the string. In case of a memory-allocation error, Lua will call
     <b>falloc</b> before raising the error.</p>

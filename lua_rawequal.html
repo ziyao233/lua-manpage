@@ -31,16 +31,15 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>int lua_rawequal (lua_State *L, int index1, int
-  index2);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>int lua_rawequal (lua_State *L, int index1, int index2);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Returns 1 if the two values in indices <b>index1</b> and
     <b>index2</b> are primitively equal (that is, equal without calling the
-    <b>__eq</b> metamethod). Otherwise false returns 0 . Also false returns 0 if
-    any of the indices are not valid.</p>
+    <b>__eq</b> metamethod). Otherwise returns 0. Also returns 0 if any of the
+    indices are not valid.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

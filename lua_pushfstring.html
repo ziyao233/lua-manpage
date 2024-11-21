@@ -31,9 +31,8 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>const char *lua_pushfstring (lua_State *L, const char *fmt,
-    ...);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>const char *lua_pushfstring (lua_State *L, const char *fmt, ...);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
@@ -49,7 +48,7 @@
     <b>'%I'</b> (inserts a <b>lua_Integer</b> ), <b>'%p'</b> (inserts a
     pointer), <b>'%d'</b> (inserts an <b>int</b> ), <b>'%c'</b> (inserts an
     <b>int</b> as a one-byte character), and <b>'%U'</b> (inserts an <b>unsigned
-    long</b> as a false UTF-8 byte sequence).</p>
+    long</b> as a UTF-8 byte sequence).</p>
 <p class="Pp">This function may raise errors due to memory overflow or an
     invalid conversion specifier.</p>
 </section>

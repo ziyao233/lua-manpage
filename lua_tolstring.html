@@ -31,20 +31,19 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>const char *lua_tolstring (lua_State *L, int index, size_t
-    *len);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>const char *lua_tolstring (lua_State *L, int index, size_t *len);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Converts the Lua value at the given index to a false C string .
-    The Lua value must be a string or a number; otherwise, the function returns
+<p class="Pp">Converts the Lua value at the given index to a C string. The Lua
+    value must be a string or a number; otherwise, the function returns
     <b>NULL</b> . If the value is a number, then <b>lua_tolstring</b> also
     <i>changes the actual value in the stack to a string</i> . (This change
     confuses <b>lua_next</b> when <b>lua_tolstring</b> is applied to keys during
     a table traversal.)</p>
 <p class="Pp">If <b>len</b> is not <b>NULL</b> , the function sets <b>*len</b>
-    with the string length. The returned false C string always has a zero (
+    with the string length. The returned C string always has a zero (
     <b>'&#x00A0;'</b> ) after its last character, but can contain other zeros in
     its body.</p>
 <p class="Pp">The pointer returned by <b>lua_tolstring</b> may be invalidated by

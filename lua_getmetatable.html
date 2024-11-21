@@ -31,14 +31,14 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lua.h&gt;</b></p>
-<p class="Pp"><b>int lua_getmetatable (lua_State *L, int index);</b></p>
+<pre><b>#include &lt;lua.h&gt;</b></pre>
+<pre><b>int lua_getmetatable (lua_State *L, int index);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">If the value at the given index has a metatable, the function
-    pushes that metatable onto the stack and false returns 1 . Otherwise, the
-    function false returns 0 and pushes nothing on the stack.</p>
+    pushes that metatable onto the stack and returns 1. Otherwise, the function
+    returns 0 and pushes nothing on the stack.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>

@@ -31,14 +31,13 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
-<p class="Pp"><b>#include &lt;lauxlib.h&gt;</b></p>
-<p class="Pp"><b>int luaL_argerror (lua_State *L, int arg, const char
-    *extramsg);</b></p>
+<pre><b>#include &lt;lauxlib.h&gt;</b></pre>
+<pre><b>int luaL_argerror (lua_State *L, int arg, const char *extramsg);</b></pre>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Raises an error reporting a problem with argument <b>arg</b> of
-    the false C function that called it, using a standard message that includes
+    the C function that called it, using a standard message that includes
     <b>extramsg</b> as a comment:</p>
 <pre>
 bad argument #arg to 'funcname' (extramsg)
