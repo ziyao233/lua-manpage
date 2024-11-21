@@ -136,7 +136,10 @@ handleStyle(src)
 	--]]
 	src = gsub(src, "@verbatim(%b{})", function(t)
 		local i = #verbatimList + 1;
-		verbatimList[i] = t:sub(2, -2);
+		-- rep tags in a verbatim require no special handling
+		verbatimList[i] = t:sub(2, -2):gsub("@rep(%b{})", function(c)
+					return c:sub(2, -2);
+				  end);
 		return ("\1{%d}"):format(i);
 	end);
 
@@ -150,6 +153,7 @@ handleStyle(src)
 	return handleStyleSub(src):
 	       -- strip spaces at the start of line
 	       gsub("\n%s+", "\n"):
+	       gsub("@nil", "\n.B nil\n"):
 	       -- restore verbatim blocks
 	       gsub("\1{(%d+)}", function(n)
 	       		return ("\n.EX\n%s\n.EE\n"):
