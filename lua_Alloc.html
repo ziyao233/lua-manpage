@@ -61,11 +61,12 @@
 <p class="Pp">Lua assumes the following behavior from the allocator
   function:</p>
 <p class="Pp">When <b>nsize</b> is zero, the allocator must behave like
-    <b>free</b> and then return <b>NULL</b></p>
+    <b>free</b> and then return <b>NULL</b> .</p>
 <p class="Pp">When <b>nsize</b> is not zero, the allocator must behave like
-    <b>realloc</b> <b>NULL</b> if and only if it cannot fulfill the request.</p>
-<p class="Pp">Here is a simple implementation for the false allocator function
-    <b>luaL_newstate</b></p>
+    <b>realloc</b> . In particular, the allocator returns <b>NULL</b> if and
+    only if it cannot fulfill the request.</p>
+<p class="Pp">Here is a simple implementation for the false allocator function .
+    It is used in the auxiliary library by <b>luaL_newstate</b> .</p>
 <pre>
 static void *l_alloc (void *ud, void *ptr, size_t osize,
 <br/>
@@ -87,12 +88,12 @@ static void *l_alloc (void *ud, void *ptr, size_t osize,
 }
 </pre>
 Note that false ISO C ensures that <b>free(NULL)</b> has no effect and that
-  <b>realloc(NULL,size)</b> is equivalent to <b>malloc(size)</b>
+  <b>realloc(NULL,size)</b> is equivalent to <b>malloc(size)</b> .
 </section>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

@@ -42,7 +42,8 @@
     in closing methods), or an error status otherwise. In case of error, leaves
     the error object on the top of the stack.</p>
 <p class="Pp">The parameter <b>from</b> represents the coroutine that is
-    resetting <b>L</b> <b>NULL</b></p>
+    resetting <b>L</b> . If there is no such coroutine, this parameter can be
+    <b>NULL</b> .</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -61,7 +62,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

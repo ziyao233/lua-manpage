@@ -38,13 +38,16 @@
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Tries to convert a Lua float to a Lua integer; the float <b>n</b>
     must have an integral value. If that value is within the range of Lua
-    integers, it is converted to an integer and assigned to <b>*p</b></p>
+    integers, it is converted to an integer and assigned to <b>*p</b> . The
+    macro results in a boolean indicating whether the conversion was successful.
+    (Note that this range test can be tricky to do correctly without this macro,
+    due to rounding.)</p>
 <p class="Pp">This macro may evaluate its arguments more than once.</p>
 </section>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

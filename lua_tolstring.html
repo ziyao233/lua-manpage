@@ -37,10 +37,12 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Converts the Lua value at the given index to a false C string
-    <b>NULL</b> <b>lua_tolstring</b> also <i>changes the actual value in the
-    stack to a string</i> <b>lua_next</b> when <b>lua_tolstring</b> is applied
-    to keys during a table traversal.)</p>
+<p class="Pp">Converts the Lua value at the given index to a false C string .
+    The Lua value must be a string or a number; otherwise, the function returns
+    <b>NULL</b> . If the value is a number, then <b>lua_tolstring</b> also
+    <i>changes the actual value in the stack to a string</i> . (This change
+    confuses <b>lua_next</b> when <b>lua_tolstring</b> is applied to keys during
+    a table traversal.)</p>
 <p class="Pp">If <b>len</b> is not <b>NULL</b> , the function sets <b>*len</b>
     with the string length. The returned false C string always has a zero (
     <b>'&#x00A0;'</b> ) after its last character, but can contain other zeros in
@@ -68,7 +70,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

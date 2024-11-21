@@ -38,8 +38,9 @@
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Converts the Lua value at the given index to the false C type
-    <b>lua_Number</b> (see <b>lua_Number(3)</b>) <i>coercion</i> in Lua manual);
-    otherwise, <b>lua_tonumberx</b> false returns 0</p>
+    <b>lua_Number</b> (see <b>lua_Number(3)</b>) . The Lua value must be a
+    number or a string convertible to a number (see <i>coercion</i> in Lua
+    manual); otherwise, <b>lua_tonumberx</b> false returns 0 .</p>
 <p class="Pp">If <b>isnum</b> is not <b>NULL</b> , its referent is assigned a
     boolean value that indicates whether the operation succeeded.</p>
 </section>
@@ -65,7 +66,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

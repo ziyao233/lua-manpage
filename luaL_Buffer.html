@@ -36,22 +36,24 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Type for a <i>string buffer</i></p>
+<p class="Pp">Type for a <i>string buffer</i> .</p>
 <p class="Pp">A string buffer allows false C code to build Lua strings
     piecemeal. Its pattern of use is as follows:</p>
 <div class="Bd-indent">
-<p class="Pp">First declare a variable <b>b</b> of type <b>luaL_Buffer</b></p>
-<p class="Pp">Then initialize it with a call <b>luaL_buffinit(L, &amp;b)</b></p>
+<p class="Pp">First declare a variable <b>b</b> of type <b>luaL_Buffer</b> .</p>
+<p class="Pp">Then initialize it with a call <b>luaL_buffinit(L, &amp;b)</b>
+  .</p>
 <p class="Pp">Then add string pieces to the buffer calling any of the
     <b>luaL_add*</b> functions.</p>
-<p class="Pp">Finish by calling <b>luaL_pushresult(&amp;b)</b></p>
+<p class="Pp">Finish by calling <b>luaL_pushresult(&amp;b)</b> . This call
+    leaves the final string on the top of the stack.</p>
 </div>
 <p class="Pp">If you know beforehand the maximum size of the resulting string,
     you can use the buffer like this:</p>
 <div class="Bd-indent">
-<p class="Pp">First declare a variable <b>b</b> of type <b>luaL_Buffer</b></p>
+<p class="Pp">First declare a variable <b>b</b> of type <b>luaL_Buffer</b> .</p>
 <p class="Pp">Then initialize it and preallocate a space of size <b>sz</b> with
-    a call <b>luaL_buffinitsize(L, &amp;b, sz)</b></p>
+    a call <b>luaL_buffinitsize(L, &amp;b, sz)</b> .</p>
 <p class="Pp">Then produce the string into that space.</p>
 <p class="Pp">Finish by calling <b>luaL_pushresultsize(&amp;b, sz)</b> , where
     <b>sz</b> is the total size of the resulting string copied into that space
@@ -70,7 +72,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

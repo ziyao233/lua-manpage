@@ -41,9 +41,10 @@
 (lua_isnoneornil(L,(arg)) ? (dflt) : func(L,(arg)))
 </pre>
 <p class="Pp">In words, if the argument <b>arg</b> is nil or absent, the macro
-    results in the default <b>dflt</b> <b>func</b> with the state <b>L</b> and
-    the argument index <b>arg</b> as arguments. Note that it evaluates the
-    expression <b>dflt</b> only if needed.</p>
+    results in the default <b>dflt</b> . Otherwise, it results in the result of
+    calling <b>func</b> with the state <b>L</b> and the argument index
+    <b>arg</b> as arguments. Note that it evaluates the expression <b>dflt</b>
+    only if needed.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -62,7 +63,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

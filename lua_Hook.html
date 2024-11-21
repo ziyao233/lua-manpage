@@ -41,8 +41,9 @@
     <b>event</b> set to the specific event that triggered the hook. Lua
     identifies these events with the following constants: <b>LUA_HOOKCALL</b> ,
     <b>LUA_HOOKRET</b> , <b>LUA_HOOKTAILCALL</b> , <b>LUA_HOOKLINE</b> , and
-    <b>LUA_HOOKCOUNT</b> <b>currentline</b> is also set. To get the value of any
-    other field in <b>ar</b> , the hook must call <b>lua_getinfo</b></p>
+    <b>LUA_HOOKCOUNT</b> . Moreover, for line events, the field
+    <b>currentline</b> is also set. To get the value of any other field in
+    <b>ar</b> , the hook must call <b>lua_getinfo</b> .</p>
 <p class="Pp">For call events, <b>event</b> can be <b>LUA_HOOKCALL</b> , the
     normal value, or <b>LUA_HOOKTAILCALL</b> , for a tail call; in this case,
     there will be no corresponding return event.</p>
@@ -51,7 +52,7 @@
     execution occurs without any calls to hooks.</p>
 <p class="Pp">Hook functions cannot have continuations, that is, they cannot
     call <b>lua_yieldk</b> , <b>lua_pcallk</b> , or <b>lua_callk</b> with a
-    non-null <b>k</b></p>
+    non-null <b>k</b> .</p>
 <p class="Pp">Hook functions can yield under the following conditions: Only
     count and line events can yield; to yield, a hook function must finish its
     execution calling <b>lua_yield</b> with <b>nresults</b> equal to zero (that
@@ -60,7 +61,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

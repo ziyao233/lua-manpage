@@ -41,9 +41,9 @@
     given activation record or a given function.</p>
 <p class="Pp">In the first case, the parameter <b>ar</b> must be a valid
     activation record that was filled by a previous call to <b>lua_getstack</b>
-    or given as argument to a hook (see <b>lua_Hook(3)</b>) <b>n</b> selects
-    which local variable to inspect; see <b>debug.getlocal</b> for details about
-    variable indices and names.</p>
+    or given as argument to a hook (see <b>lua_Hook(3)</b>) . The index <b>n</b>
+    selects which local variable to inspect; see <b>debug.getlocal</b> for
+    details about variable indices and names.</p>
 <p class="Pp"><b>lua_getlocal</b> pushes the variable's value onto the stack and
     returns its name.</p>
 <p class="Pp">In the second case, <b>ar</b> must be <b>NULL</b> and the function
@@ -75,7 +75,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

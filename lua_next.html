@@ -62,10 +62,10 @@ while (lua_next(L, t) != 0) {
 <p class="Pp">While traversing a table, avoid calling <b>lua_tolstring</b>
     directly on a key, unless you know that the key is actually a string. Recall
     that <b>lua_tolstring</b> may change the value at the given index; this
-    confuses the next call to <b>lua_next</b></p>
-<p class="Pp">This function may raise an error if the given key is neither @nil
-    nor present in the table. See function <b>next</b> for the caveats of
-    modifying the table during its traversal.</p>
+    confuses the next call to <b>lua_next</b> .</p>
+<p class="Pp">This function may raise an error if the given key is neither
+    <b>nil</b> nor present in the table. See function <b>next</b> for the
+    caveats of modifying the table during its traversal.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -84,7 +84,7 @@ while (lua_next(L, t) != 0) {
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

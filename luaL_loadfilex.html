@@ -39,11 +39,11 @@
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Loads a file as a Lua chunk. This function uses <b>lua_load</b> to
-    load the chunk in the file named <b>filename</b> <b>filename</b> is
+    load the chunk in the file named <b>filename</b> . If <b>filename</b> is
     <b>NULL</b> , then it loads from the standard input. The first line in the
-    file is ignored if it starts with a <b>#</b></p>
-<p class="Pp">The string <b>mode</b> works as in the function
-  <b>lua_load</b></p>
+    file is ignored if it starts with a <b>#</b> .</p>
+<p class="Pp">The string <b>mode</b> works as in the function <b>lua_load</b>
+  .</p>
 <p class="Pp">This function returns the same results as <b>lua_load</b> or
     <b>LUA_ERRFILE</b> for file-related errors.</p>
 <p class="Pp">As <b>lua_load</b> , this function only loads the chunk; it does
@@ -66,7 +66,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

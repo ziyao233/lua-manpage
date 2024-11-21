@@ -48,8 +48,8 @@
     <b>lua_load</b> pushes the compiled chunk as a Lua function on top of the
     stack. Otherwise, it pushes an error message.</p>
 <p class="Pp">The <b>lua_load</b> function uses a user-supplied <b>reader</b>
-    function to read the chunk (see <b>lua_Reader(3)</b>) <b>data</b> argument
-    is an opaque value passed to the reader function.</p>
+    function to read the chunk (see <b>lua_Reader(3)</b>) . The <b>data</b>
+    argument is an opaque value passed to the reader function.</p>
 <p class="Pp">The <b>chunkname</b> argument gives a name to the chunk, which is
     used for error messages and in debug information (see <i>debugI</i> in Lua
     manual).</p>
@@ -72,13 +72,15 @@
     internal use before the first call, and it restores the stack size to its
     original size plus one (for the pushed result) after the last call.</p>
 <p class="Pp"><b>lua_load</b> can return <b>LUA_OK</b> , <b>LUA_ERRSYNTAX</b> ,
-    or <b>LUA_ERRMEM</b> <i>statuscodes</i> in Lua manual).</p>
+    or <b>LUA_ERRMEM</b> . The function may also return other values
+    corresponding to errors raised by the read function (see <i>statuscodes</i>
+    in Lua manual).</p>
 <p class="Pp">If the resulting function has upvalues, its first upvalue is set
     to the value of the false global environment stored at index
     <b>LUA_RIDX_GLOBALS</b> in the registry (see <i>registry</i> in Lua manual).
     When loading main chunks, this upvalue will be the <b>_ENV</b> variable (see
     <i>globalenv</i> in Lua manual). Other upvalues are initialized with
-  @nil.</p>
+    <b>nil</b> .</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -102,7 +104,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

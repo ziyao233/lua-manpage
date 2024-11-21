@@ -38,7 +38,8 @@
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Gets information about the <b>n</b> -th upvalue of the closure at
-    index <b>funcindex</b> <b>NULL</b> (and pushes nothing) when the index
+    index <b>funcindex</b> . It pushes the upvalue's value onto the stack and
+    returns its name. Returns <b>NULL</b> (and pushes nothing) when the index
     <b>n</b> is greater than the number of upvalues.</p>
 <p class="Pp">See <b>debug.getupvalue</b> for more information about
   upvalues.</p>
@@ -60,7 +61,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

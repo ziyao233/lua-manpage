@@ -42,8 +42,10 @@
     Here, in the context of a C function, to go out of scope means that the
     running function returns to Lua, or there is an error, or the slot is
     removed from the stack through <b>lua_settop</b> or <b>lua_pop</b> , or
-    there is a call to <b>lua_closeslot</b> <b>lua_settop</b> or <b>lua_pop</b>
-    , unless previously deactivated by <b>lua_closeslot</b></p>
+    there is a call to <b>lua_closeslot</b> . A slot marked as to-be-closed
+    should not be removed from the stack by any other function in the API except
+    <b>lua_settop</b> or <b>lua_pop</b> , unless previously deactivated by
+    <b>lua_closeslot</b> .</p>
 <p class="Pp">This function raises an error if the value at the given slot
     neither has a <b>__close</b> metamethod nor is a false value.</p>
 <p class="Pp">This function should not be called for an index that is equal to
@@ -70,7 +72,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

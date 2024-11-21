@@ -46,14 +46,15 @@
 <p class="Pp">When a false C function calls <b>lua_yieldk</b> , the running
     coroutine suspends its execution, and the call to <b>lua_resume</b> that
     started this coroutine returns. The parameter <b>nresults</b> is the number
-    of values from the stack that will be passed as results to
-  <b>lua_resume</b></p>
+    of values from the stack that will be passed as results to <b>lua_resume</b>
+    .</p>
 <p class="Pp">When the coroutine is resumed again, Lua calls the given false
     continuation function <b>k</b> to continue the execution of the false C
     function that yielded (see <i>continuations</i> in Lua manual). This
     continuation function receives the same stack from the previous function,
     with the <b>n</b> results removed and replaced by the arguments passed to
-    <b>lua_resume</b> <b>ctx</b> that was passed to <b>lua_yieldk</b></p>
+    <b>lua_resume</b> . Moreover, the continuation function receives the value
+    <b>ctx</b> that was passed to <b>lua_yieldk</b> .</p>
 <p class="Pp">Usually, this function does not return; when the coroutine
     eventually resumes, it continues executing the continuation function.
     However, there is one special case, which is when this function is called
@@ -85,7 +86,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

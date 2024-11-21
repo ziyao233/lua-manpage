@@ -38,7 +38,9 @@
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Converts the value at the given index to a generic false C pointer
     ( <b>void*</b> ). The value can be a userdata, a table, a thread, a string,
-    or a function; otherwise, <b>lua_topointer</b> returns <b>NULL</b></p>
+    or a function; otherwise, <b>lua_topointer</b> returns <b>NULL</b> .
+    Different objects will give different pointers. There is no way to convert
+    the pointer back to its original value.</p>
 <p class="Pp">Typically this function is used only for hashing and debug
     information.</p>
 </section>
@@ -59,7 +61,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

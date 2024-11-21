@@ -42,15 +42,17 @@
     reference is a unique integer key; <b>luaL_ref</b> ensures the uniqueness of
     the keys it returns. The entry 1 is reserved for internal use. Before the
     first use of <b>luaL_ref</b> , the integer keys of the table should form a
-    proper sequence (no holes), and the value at entry 1 should be false: @nil
-    if the sequence is empty, @false otherwise. You should not manually set
-    integer keys in the table after the first use of <b>luaL_ref</b></p>
+    proper sequence (no holes), and the value at entry 1 should be false:
+    <b>nil</b> if the sequence is empty, <b>false</b> otherwise. You should not
+    manually set integer keys in the table after the first use of
+    <b>luaL_ref</b> .</p>
 <p class="Pp">You can retrieve an object referred by the reference <b>r</b> by
-    calling <b>lua_rawgeti(L, t, r)</b> or <b>lua_geti(L, t, r)</b>
-    <b>luaL_unref</b> frees a reference.</p>
-<p class="Pp">If the object on the top of the stack is @nil, <b>luaL_ref</b>
-    returns the constant <b>LUA_REFNIL</b> <b>LUA_NOREF</b> is guaranteed to be
-    different from any reference returned by <b>luaL_ref</b></p>
+    calling <b>lua_rawgeti(L, t, r)</b> or <b>lua_geti(L, t, r)</b> . The
+    function <b>luaL_unref</b> frees a reference.</p>
+<p class="Pp">If the object on the top of the stack is <b>nil</b> ,
+    <b>luaL_ref</b> returns the constant <b>LUA_REFNIL</b> . The constant
+    <b>LUA_NOREF</b> is guaranteed to be different from any reference returned
+    by <b>luaL_ref</b> .</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -69,7 +71,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

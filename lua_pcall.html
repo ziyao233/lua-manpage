@@ -39,20 +39,24 @@
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Calls a function (or a callable object) in protected mode.</p>
 <p class="Pp">Both <b>nargs</b> and <b>nresults</b> have the same meaning as in
-    <b>lua_call</b> <b>lua_pcall</b> behaves exactly like <b>lua_call</b>
+    <b>lua_call</b> . If there are no errors during the call, <b>lua_pcall</b>
+    behaves exactly like <b>lua_call</b> . However, if there is any error,
     <b>lua_pcall</b> catches it, pushes a single value on the stack (the error
     object), and returns an error code. Like <b>lua_call</b> , <b>lua_pcall</b>
     always removes the function and its arguments from the stack.</p>
 <p class="Pp">If <b>msgh</b> is 0, then the error object returned on the stack
     is exactly the original error object. Otherwise, <b>msgh</b> is the stack
-    index of a <i>message handler</i> <b>lua_pcall</b></p>
+    index of a <i>message handler</i> . (This index cannot be a pseudo-index.)
+    In case of runtime errors, this handler will be called with the error object
+    and its return value will be the object returned on the stack by
+    <b>lua_pcall</b> .</p>
 <p class="Pp">Typically, the message handler is used to add more debug
     information to the error object, such as a stack traceback. Such information
     cannot be gathered after the return of <b>lua_pcall</b> , since by then the
     stack has unwound.</p>
 <p class="Pp">The <b>lua_pcall</b> function returns one of the following status
     codes: <b>LUA_OK</b> , <b>LUA_ERRRUN</b> , <b>LUA_ERRMEM</b> , or
-    <b>LUA_ERRERR</b></p>
+    <b>LUA_ERRERR</b> .</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -71,7 +75,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

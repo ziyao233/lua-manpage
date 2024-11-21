@@ -37,9 +37,9 @@
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Returns an address to a space of size <b>sz</b> where you can copy
-    a string to be added to buffer <b>B</b> (see <b>luaL_Buffer(3)</b>)
-    <b>luaL_addsize</b> with the size of the string to actually add it to the
-    buffer.</p>
+    a string to be added to buffer <b>B</b> (see <b>luaL_Buffer(3)</b>) . After
+    copying the string into this space you must call <b>luaL_addsize</b> with
+    the size of the string to actually add it to the buffer.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -63,7 +63,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

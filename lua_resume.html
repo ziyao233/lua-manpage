@@ -38,7 +38,7 @@
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<p class="Pp">Starts and resumes a coroutine in the given thread <b>L</b></p>
+<p class="Pp">Starts and resumes a coroutine in the given thread <b>L</b> .</p>
 <p class="Pp">To start a coroutine, you push the main function plus any
     arguments onto the empty stack of the thread. then you call
     <b>lua_resume</b> , with <b>nargs</b> being the number of arguments. The
@@ -54,9 +54,10 @@
     have to be 1 for the sole error object.)</p>
 <p class="Pp">To resume a suspended coroutine, you remove the <b>*nresults</b>
     yielded values from its stack, push the values to be passed as results from
-    <b>yield</b> , and then call <b>lua_resume</b></p>
+    <b>yield</b> , and then call <b>lua_resume</b> .</p>
 <p class="Pp">The parameter <b>from</b> represents the coroutine that is
-    resuming <b>L</b> <b>NULL</b></p>
+    resuming <b>L</b> . If there is no such coroutine, this parameter can be
+    <b>NULL</b> .</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -75,7 +76,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

@@ -37,7 +37,9 @@
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Releases the reference <b>ref</b> from the table at index <b>t</b>
-    (see <b>luaL_ref(3)</b>) <b>ref</b> can be used again by <b>luaL_ref</b></p>
+    (see <b>luaL_ref(3)</b>) . The entry is removed from the table, so that the
+    referred object can be collected and the reference <b>ref</b> can be used
+    again by <b>luaL_ref</b> .</p>
 <p class="Pp">If <b>ref</b> is <b>LUA_NOREF</b> or <b>LUA_REFNIL</b> ,
     <b>luaL_unref</b> does nothing.</p>
 </section>
@@ -63,7 +65,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

@@ -39,7 +39,8 @@
 <p class="Pp">This function is equivalent to <b>lua_yieldk</b> , but it has no
     continuation (see <i>continuations</i> in Lua manual). Therefore, when the
     thread resumes, it continues the function that called the function calling
-    <b>lua_yield</b></p>
+    <b>lua_yield</b> . To avoid surprises, this function should be called only
+    in a tail call.</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -58,7 +59,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

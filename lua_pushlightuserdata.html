@@ -38,8 +38,10 @@
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Pushes a light userdata onto the stack.</p>
 <p class="Pp">Userdata represent false C values in Lua. A <i>light userdata</i>
-    represents a pointer, a <b>void*</b> <i>any</i> light userdata with the same
-    false C address</p>
+    represents a pointer, a <b>void*</b> . It is a value (like a number): you do
+    not create it, it has no individual metatable, and it is not collected (as
+    it was never created). A light userdata is equal to <i>any</i> light
+    userdata with the same false C address .</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -58,7 +60,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

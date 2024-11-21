@@ -41,8 +41,9 @@
 <p class="Pp">Argument <b>f</b> is the hook function. <b>mask</b> specifies on
     which events the hook will be called: it is formed by a bitwise OR of the
     constants <b>LUA_MASKCALL</b> , <b>LUA_MASKRET</b> , <b>LUA_MASKLINE</b> ,
-    and <b>LUA_MASKCOUNT</b> <b>count</b> argument is only meaningful when the
-    mask includes <b>LUA_MASKCOUNT</b></p>
+    and <b>LUA_MASKCOUNT</b> . The <b>count</b> argument is only meaningful when
+    the mask includes <b>LUA_MASKCOUNT</b> . For each event, the hook is called
+    as explained below:</p>
 <dl class="Bl-tag">
   <dt id="The"><a class="permalink" href="#The">The call hook</a></dt>
   <dd>is called when the interpreter calls a function. The hook is called just
@@ -77,7 +78,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>

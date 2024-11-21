@@ -37,10 +37,11 @@
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
 <p class="Pp">Raises an error. The error message format is given by <b>fmt</b>
-    plus any extra arguments, following the same rules of
-  <b>lua_pushfstring</b></p>
+    plus any extra arguments, following the same rules of <b>lua_pushfstring</b>
+    . It also adds at the beginning of the message the file name and the line
+    number where the error occurred, if this information is available.</p>
 <p class="Pp">This function never returns, but it is an idiom to use it in false
-    C functions as <b>return luaL_error(args)</b></p>
+    C functions as <b>return luaL_error(args)</b> .</p>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
@@ -59,7 +60,7 @@
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">November 20, 2024</td>
+    <td class="foot-date">November 21, 2024</td>
     <td class="foot-os"></td>
   </tr>
 </table>
